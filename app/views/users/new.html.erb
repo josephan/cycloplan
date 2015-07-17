@@ -1,0 +1,14 @@
+<% provide(:title, "Sign Up") %>
+<h1>Sign Up</h1>
+<div id="sign-up-form">
+	<%= form_for (@user) do |f| %>
+		<%= render 'shared/error_messages' %><br>
+		<%= f.text_field :first_name, placeholder: "First name" %><br>
+		<%= f.text_field :last_name, placeholder: "Last name" %><br>
+		<%= f.email_field :email, placeholder: "Email" %><br>
+		<%= f.password_field :password, placeholder: "Password"%><br>
+		<%= f.password_field :password_confirmation, placeholder: "Confirm password" %><br>
+		<%= f.label :birthday, "Birthday" %><br><%= f.date_select :birthday, {use_short_month: true, start_year: 1905, end_year: Date.today.year, order: [:month, :day, :year], prompt: true} %><br>
+		<%= f.submit "Sign Up" %><br>
+	<% end %>
+</div>				

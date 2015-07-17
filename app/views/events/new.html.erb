@@ -1,0 +1,10 @@
+<h1>Create New Event</h1>
+<div>
+	<%= form_for(@event) do |f| %>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %><br>
+		<%= f.label :about %><br>
+		<%= f.text_area :about, placeholder: "Not required" %><br>
+		<%= f.submit %>
+	<% end %>
+</div>
