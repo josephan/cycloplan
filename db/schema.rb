@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714171436) do
+ActiveRecord::Schema.define(version: 20150807132622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20150714171436) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "events", ["type"], name: "index_events_on_type", using: :btree
+  add_index "events", ["user_id", "type"], name: "index_events_on_user_id_and_type", using: :btree
+
   create_table "plans", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "date"
@@ -37,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150714171436) do
     t.text     "description"
   end
 
+  add_index "plans", ["user_id", "date"], name: "index_plans_on_user_id_and_date", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -47,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150714171436) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.boolean  "twelve_hours"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

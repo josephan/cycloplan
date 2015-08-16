@@ -3,7 +3,7 @@ module SessionsHelper
 	# Logs in the given user.
 	def log_in(user)
 		session[:user_id] = user.id
-	end
+  end
 
 	# Remembers a user in a persistent session.
   def remember(user)
@@ -58,6 +58,16 @@ module SessionsHelper
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.url if request.get?
+  end
+
+  # stores today's date to session when user logs in
+  def store_date(user)
+    session[:date] = Time.now.in_time_zone(user.timezone).to_date
+  end
+
+  # returns current date in user's timezone
+  def current_date
+    Time.now.in_time_zone(current_user.timezone).to_date
   end
 
 end

@@ -1,0 +1,569 @@
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Lato:300italic,700italic|Raleway:400,600|Titillium+Web);
+$button-font: 'Raleway', sans-serif;
+$home-font: 'Lato', sans-serif;
+$date-font: 'Titillium Web', sans-serif;
+
+
+/* COLORS */
+$light-blue: #d2f6ec;
+$medium-blue: #59b1ae;
+$dark-blue: #1c4054;
+
+$light-green: #9DE09F;
+$lighter-green: #CDFFC7;
+$dark-green: #6CB159;
+
+$light-gray: #EDEDED;
+$medium-gray: #DEDEDE;
+$dark-gray: #595959;
+
+/* 	PAGE */
+.main-wrapper {
+	max-width: 900px;
+	margin: auto;
+}
+
+/* HEADER */
+header {
+	background-color: $medium-blue;
+
+	.logo {
+		display: inline-block;
+		img {
+			width: 250px;
+			margin-top: 10px;
+		}
+	}
+
+	ul {
+		display: inline-block;
+		float: right;
+		li {
+			display: inline-block;
+			a {	
+				display: inline-block;
+				width: 80px;
+				height: 25px;
+				background-color: $dark-blue;
+				text-align: center;
+				line-height: 25px;
+				margin-top: 30px;
+				margin-left: 5px;
+				color: white;
+				font-size: 14px;
+				font-family: $button-font;
+				font-weight: 600;
+				&:hover {
+					background-color: black;
+				}
+			}
+		}
+	}
+}
+
+/* FOOTER */
+footer {
+	border-top: 1px solid grey;
+	margin-bottom: 50px;
+	p {
+		font-family: $button-font;
+		font-size: 13px;
+		color: grey;
+		display: inline;
+		margin-right: 20px;
+	}
+	a {
+		font-size: 12px;
+		font-family: $button-font;
+		color: grey;
+		margin-top: 10px 20px 10px 100px;
+		display: inline-block;
+	}
+}
+
+/* HOME PAGE */
+.home-page {
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $home-font;
+		font-weight: 300;
+		font-style: italic;
+		margin: 20px 0;
+	}
+	h1 {
+		font-size: 85px;
+	}
+	h2 {
+		font-size: 52px;
+	}
+	h3 {
+		font-size: 45px;
+	}
+	h4 {
+		font-size: 40px;
+	}
+
+}
+
+.home-icons {
+	img {
+		width: 22.2%;
+		&:nth-child(n+2) {
+			margin-left: 2%;
+		}
+	}
+}
+
+.large-button {
+	a {
+		display: inline-block;
+		text-align: center;
+		height: 50px;
+		width: 130px;
+		color: white;
+		background-color: $medium-blue;
+		border: 2px solid black;
+		line-height: 50px;
+		font-family: $button-font;
+		font-size: 22px;
+		&:hover {
+			background-color: $dark-blue;
+			}
+		}
+		margin-bottom: 60px;
+}
+
+/* TOTAL VIEW */
+.total-view {
+	display: inline-block;
+	padding-left: 20px;
+	padding-top: 20px;
+	margin-bottom: 30px;
+	a {
+		display: inline-block;
+		height: 100px;
+		width: 100px;
+		color: black;
+		background-color: $light-blue;
+		text-align: center;
+		line-height: 100px;
+		margin: 18px;
+		border: 1px solid black;
+		font-family: $date-font;
+		&:hover {
+			background-color: $medium-blue;
+		}
+	}
+	.current {
+		background-color: $light-green;
+		&:hover {
+			background-color: $dark-green;
+		}
+	}
+}
+
+/* YEAR VIEW */
+.center-year {
+	text-align: center;
+	p {
+		font-family: $date-font;
+		font-size: 26px;
+		font-weight: 600;
+		margin: 10px;
+	}
+	.placeholder {
+		display: inline-block;
+		width: 120px;
+		height: 50px;
+		border: 1px solid white;
+	}
+}
+
+.year-view {
+	text-align: center;
+	margin-bottom: 30px;
+	.months {
+		display: inline-block;
+		width: 500px;
+		a {
+			display: inline-block;
+			height: 120px;
+			width: 120px;
+			color: black;
+			background-color: $light-blue;
+			border: 1px solid black;
+			font-family: $date-font;
+			text-align: center;
+			line-height: 120px;
+			margin: 10px;
+			&:hover {
+				background-color: $medium-blue;
+			}
+		}
+		.current {
+			background-color: $light-green;
+			&:hover {
+				background-color: $dark-green;
+			}
+		}
+	}
+
+	.prev-year,
+	.next-year {
+		display: inline-block;
+		height: 50px;
+		width: 120px;
+		color: black;
+		background-color: white;
+		border: 1px solid black;
+		font-family: $date-font;
+		text-align: center;
+		line-height: 50px;
+		position: relative;
+		&:hover {
+			background-color: $light-gray;
+		}
+	}
+	.prev-year {
+		float: left;
+		top: 200px;
+		left: 60px;
+	}
+	.next-year {
+		float: right;
+		top: 200px;
+		right: 60px;
+	}
+}
+/* MONTH VIEW */
+table.month-table {
+	display: inline-block;
+	margin: 20px;
+	thead {
+		tr {
+			th {
+				font-size: 20px;
+				font-family: $date-font;
+				padding: 10px 0;
+			}
+		}
+	}
+	tbody {
+		tr {
+			td, th {
+				font-family: $date-font;
+				border: 1px solid black;
+				width: 60px;
+				height: 60px;
+
+			}
+			th {
+				font-size: 20px;
+				height: 40px;
+			}
+			td {
+				text-align: center;
+				a {
+					display: block;
+					color: black;
+					background-color: white; 	
+					width: 100%;
+					height: 100%;
+					line-height: 60px;
+					&:hover {
+						background-color: $light-gray;
+					}
+				}
+				.day-filler {
+					background-color: $medium-gray;
+					color: $dark-gray;
+					&:hover {
+						background-color: $medium-gray;
+					}
+				}
+				.non-empty {
+					background-color: $light-blue;
+					&:hover {
+						background-color: $medium-blue;
+					}
+				}
+				.current {
+					background-color: $light-green;
+					&:hover {
+						background-color: $dark-green;
+					}
+				}
+			}
+		}
+	}
+}
+
+.center-month {
+	text-align: center;
+	.next-month,
+	.prev-month {
+		position: relative;
+		display: inline-block;
+		width: 160px;
+		height: 40px;
+		border: 1px solid black;
+		color: black;
+		line-height: 40px;
+		font-family: $date-font;
+		&:hover {
+			background-color: $light-gray;
+		}
+	}
+	.prev-month {
+		top: -250px;
+	}
+	.next-month {
+		top: -250px;
+	}
+}
+/* DAY VIEW */
+
+.day-planner {
+	margin-left: 25%;
+	-moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+	table {
+		margin-bottom: 50px;
+		tr, td {
+			border: 1px solid $dark-gray;
+			box-sizing: border-box;
+			font-family: $date-font;
+		}
+		.interval {
+			height: 25px;
+			width: 305px;
+			cursor: pointer;
+		}
+		.hour-container {
+			height: 100px;
+			width: 120px;
+			padding: 5px;
+			vertical-align: top;
+			font-size: 16px;
+		}
+	}
+	p {
+		font-family: $date-font;
+		font-size: 30px;
+		margin: 12px;
+		padding-left: 40px;
+	}
+	.plan-display-container {
+		position: absolute;
+		padding-left: 120px;
+		height: 2400px;
+		margin-left: 1px;
+		z-index: 1;
+		.plan-create {
+			display: inline-block;
+			position: absolute;
+			width: 305px;
+			height: 2400px;
+			cursor: pointer;
+		}
+		.plan-wrap {
+			position:absolute;
+			box-sizing: border-box;
+			background-color: rgba(0,0,0,0);
+			width: 306px;
+			padding-left: 1px;
+			cursor: default;
+			.plan-display {
+				position: absolute;
+				background-color: $light-blue ;
+				height: 23px;
+				width: 300px;
+				box-sizing: border-box;
+				border: 1px solid $medium-blue;
+				font-family: $date-font;
+				padding: 5px;
+				line-height: 10px;
+				font-size: 16px;
+				cursor: default;
+				a {
+					display: inline-block;
+					float: right;
+					height: 11px;
+					width: 11px;
+					background-color: white;
+					border: 1px solid black;
+					background-image: url(<%= asset_path 'close.png' %>);
+					background-size: cover;
+					&:hover {
+						background-color: $light-gray;
+					}
+				}
+			}
+		}
+	}
+	.prev-day,
+	.next-day {
+		display: inline-block;
+		position: fixed;
+		display: inline-block;
+		a {
+			display: inline-block;
+			color: black;
+			height: 30px;
+			width: 80px;
+			background-color: white;
+			border: 1px solid black;
+			text-align: center;
+			line-height: 30px;
+			&:hover {
+				background-color: $light-gray;
+			}
+		}
+		font-family: $date-font;
+		
+	}
+	.prev-day {
+		float: left;
+		margin-left: -130px;
+		margin-top: 60px;
+	}
+	.next-day {
+		float: right;
+		margin-left: 470px;
+		margin-top: 0px;
+	}
+}
+
+.category-container {
+	display: inline-block;
+	position: absolute;
+	width: 167px;
+	background-color: $lighter-green;
+	border: 1px solid black;
+	padding: 10px;
+	padding-bottom: 5px;
+	left: 900px;
+	z-index: 2;
+	box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.4);
+	.category {
+		box-sizing: border-box;
+		margin-bottom: 5px;
+		width: 80px;
+		height: 80px;
+		background-size: cover;
+		background-color: white;
+		&:hover {
+			background-color: $light-gray;
+		}
+		&:active {
+			background-position: 1px 1px;
+			background-color: $medium-gray;
+		}
+	}
+	.health-category {
+		background-image: url(<%= asset_path 'health.svg' %>);
+	}
+	.work-category {
+		background-image: url(<%= asset_path 'work.svg' %>);
+	}
+	.hobby-category {
+		background-image: url(<%= asset_path 'hobby.svg' %>);
+	}
+	.custom-category {
+		background-image: url(<%= asset_path 'custom.svg' %>);
+	}
+}
+
+.plan-form {
+	padding: 10px;
+	padding-top: 0;
+	display: inline-block;
+	input[type="submit"] {
+		height: 40px;
+		width: 70px;
+		font-family: $date-font;
+		font-size: 14px;
+	}
+}
+
+.plan-form-container {
+	width: 150px;
+	height: 75px;
+	img {
+		display: inline-block;
+		width: 70px;
+	}
+	form {
+		position: relative;
+		top: -25px;
+		display: inline-block;
+	}
+}
+
+.close-category-container {
+	height: 15px;
+	width: 10px;
+	display: inline-block;
+	background-image: url(<%= asset_path 'close.png' %>);
+	background-size: cover;
+	margin: 0;
+	margin-left: 148px;
+}
+
+.generic-button {
+	padding: 2px 5px;
+	background-color: white;
+	color: black;
+	font-family: $date-font;
+	border: 1px solid black;
+	display: inline-block;
+	margin-top: 20px;
+	&:hover {
+		background-color: $light-gray;
+	}
+}
+.stylish-form {
+	margin: 0 auto;
+	width: 300px;
+	h1 {
+		font-family: $date-font;
+		margin: 20px 0;
+	}
+
+	form {
+		display: inline-block;
+		font-family: $date-font;
+		background-color: $light-blue;
+		padding: 20px;
+		input {
+			margin-bottom: 10px;
+			padding-left: 5px;
+		}
+		select {
+			font-size: 14px;
+			margin-bottom: 20px;
+			margin-right: 5px;
+		}
+	}
+
+	p {
+		font-family: $date-font;
+		margin: 0;
+	}
+	.field_with_errors {
+		display: inline-block;
+		margin: 0;
+
+	}
+	#error_explanation {
+		margin-top: 20px;
+		border: 1px solid red;
+		padding-left: 5px;
+	}
+}
+.alert-danger {
+	font-family: $date-font;
+}

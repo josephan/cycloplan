@@ -1,6 +1,8 @@
 <% provide(:title, "Edit Profile") %>
+<div class="stylish-form">
 <h1>Edit Profile</h1>
 <%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %><br>
 	<%= f.label :first_name %><br>
 	<%= f.text_field :first_name %><br>
 	<%= f.label :last_name %><br>
@@ -13,4 +15,5 @@
 	<%= f.time_zone_select :timezone, nil, include_blank: true %><br>
 	<%= f.submit "Save settings" %>
 <% end %>
-<%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be reverted." } %>
+<%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." } %>
+</div>

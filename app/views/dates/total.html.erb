@@ -1,0 +1,9 @@
+<div class="total-view">
+	<% (@user.birthday.year..(Time.now.year + 5)).each do |year| %>
+		<% if year == Time.now.in_time_zone(current_user.timezone).year %>
+			<%= link_to year, year_path(year: year), class: "current"  %>
+		<% else %>
+			<%= link_to year, year_path(year: year)%>
+		<% end %>
+	<% end %>
+</div>

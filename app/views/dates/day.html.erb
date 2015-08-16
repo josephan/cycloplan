@@ -1,8 +1,121 @@
-<%= @plans.each do |p| %>
-	<p>
-		<%= p.start_at %><br>
-		<%= p.end_at %><br>
-		<%= p.name %><br>
-		<%= p.about %>
-	</p>
-<% end %>
+<%= include_gon(:init => true) %>
+<%= Gon::Base.render_data({}) %>
+<% 
+	hours = []
+	(0..23).each do |i|
+		if "#{i}".length < 2
+			hours << "0#{i}"
+		else
+			hours << "#{i}"
+		end
+	end
+%>
+<%= link_to "Back to month", month_path(year: @date.year,month: @date.month), class: "generic-button" %>
+<div class="day-planner">
+	<div class="prev-day">
+		<% yesterday = @date - 1 %>
+		<%= link_to "Prev", day_path(year: yesterday.year,month:yesterday.month,day: yesterday.day) %>
+	</div>
+<p>
+	<%= @date.strftime('%A, %B %e, %Y') %>
+</p>
+	<div class="next-day">
+		<% tomorrow = @date + 1 %>
+		<%= link_to "Next", day_path(year:tomorrow.year, month:tomorrow.month, day:tomorrow.day) %>
+	</div>
+<div class="plan-display-container">
+	<div class="plan-create">
+	</div>
+</div>
+<table>
+	<tbody>
+		</tr>
+		<% hours.each do |h| %>
+			<tr>
+				<td class="hour-container" rowspan="4"><%= "#{h}:00" %></td>
+				<td class="interval" data-interval=<%= "#{h}:00" %> ></td>
+			</tr>
+			<tr>
+				<td class="interval" data-interval=<%= "#{h}:15" %> ></td>
+			</tr>
+			<tr>
+				<td class="interval" data-interval=<%= "#{h}:30" %> ></td>
+			</tr>
+			<tr>
+				<td class="interval" data-interval=<%= "#{h}:45" %> ></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+	<div class="category-container">
+		<button class="close-category-container"></button>
+		<button class="category health-category" data-form=".health-plans"></button>
+		<button class="category work-category" data-form=".work-plans"></button>
+		<button class="category hobby-category" data-form=".hobby-plans"></button>
+		<button class="category custom-category" data-form=".custom-plans"></button>
+
+		<div class="plan-form health-plans">
+			<button class="plan-back-button">back</button>
+			<% @health_events.each do |e| %>
+				<div class="plan-form-container">
+				<%= image_tag e.image %>
+					<%= form_tag('/plans', method: 'post') do %>
+						<%= hidden_field_tag 'plan[start_at]', " ", class: "form-start-at" %>
+						<%= hidden_field_tag 'plan[end_at]', " ", class: "form-end-at" %>
+						<%= hidden_field_tag 'plan[event_id]', e.id %>
+						<%= hidden_field_tag 'plan[date]', @date %>
+						<%= submit_tag e.name %>
+				<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="plan-form work-plans">
+			<button class="plan-back-button">back</button>
+			<% @work_events.each do |e| %>
+				<div class="plan-form-container">
+					<%= image_tag e.image %>
+						<%= form_tag('/plans', method: 'post') do %>
+							<%= hidden_field_tag 'plan[start_at]', " ", class: "form-start-at" %>
+							<%= hidden_field_tag 'plan[end_at]', " ", class: "form-end-at" %>
+							<%= hidden_field_tag 'plan[event_id]', e.id %>
+							<%= hidden_field_tag 'plan[date]', @date %>
+							<%= submit_tag e.name %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="plan-form hobby-plans">
+			<button class="plan-back-button">back</button>
+			<% @hobby_events.each do |e| %>
+				<div class="plan-form-container">
+				<%= image_tag e.image %>
+				<%= form_tag('/plans', method: 'post') do %>
+						<%= hidden_field_tag 'plan[start_at]', " ", class: "form-start-at" %>
+						<%= hidden_field_tag 'plan[end_at]', " ", class: "form-end-at" %>
+						<%= hidden_field_tag 'plan[event_id]', e.id %>
+						<%= hidden_field_tag 'plan[date]', @date %>
+						<%= submit_tag e.name %>
+				<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="plan-form custom-plans">
+			<button class="plan-back-button">back</button>
+			<% @custom_events.each do |e| %>
+				<div class="plan-form-container">
+				<%= image_tag e.image %>
+				<%= form_tag('/plans', method: 'post') do %>
+						<%= hidden_field_tag 'plan[start_at]', " ", class: "form-start-at" %>
+						<%= hidden_field_tag 'plan[end_at]', " ", class: "form-end-at" %>
+						<%= hidden_field_tag 'plan[event_id]', e.id %>
+						<%= hidden_field_tag 'plan[date]', @date %>
+						<%= submit_tag e.name %>
+				<% end %>
+				</div>
+			<% end %>
+			<br><%= link_to "create custom event", new_event_path %> 
+		</div>
+	</div>
+
+</div>

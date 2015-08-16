@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
 	def home
-		redirect_to user_url(current_user) if logged_in?
+		redirect_to total_path if logged_in?
 	end
 
 	def privacy

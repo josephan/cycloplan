@@ -1,0 +1,62 @@
+<%= link_to "Back to year", year_path(year: @date.year), class: "generic-button" %>
+<div class="center-month">
+<% unless @date.year == current_user.birthday.year && @date.month == 1 %>
+	<% prevmonth = @date.prev_month %>
+	<%= link_to "Previous Month", month_path(year: prevmonth.year, month: prevmonth.month), class: "prev-month" %>
+<% end %>
+<table class="month-table">
+	<thead>
+		<tr>
+			<th colspan="7"><%= Date::MONTHNAMES[@date.month]%> <%= @date.year %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="weekdays">
+			<th>Sun</th>
+			<th>Mon</th>
+			<th>Tue</th>
+			<th>Wed</th>
+			<th>Thu</th>
+			<th>Fri</th>
+			<th>Sat</th>
+		</tr>
+		<%
+				days = []
+				beg_days = @date.beginning_of_month.wday
+				mid_days = Time.days_in_month(@date.month, @date.year)
+				end_days = 42 - beg_days - mid_days
+
+				prev = @date.prev_month.end_of_month
+				((prev - (beg_days - 1))..prev).each do |i|
+					days << [prev.year, prev.month, i.day]
+				end
+
+				mid_days.times do |i|
+					days << [@date.year, @date.month, i + 1]
+				end
+
+				nex = @date.next_month.beginning_of_month
+				(nex..(nex + (end_days - 1))).each do |i|
+					days << [nex.year, nex.month, i.day]
+				end
+		%>
+		<% 6.times do %>
+			<tr>
+				<% days.shift(7).each do |y,m,d| %>
+					<td>
+						<% if m != @date.month %>
+							<%= link_to d, day_path(day: d, month: m, year: y), :class => "day-filler" %>
+						<% else %>
+							<%= link_to d, day_path(day: d, month: m, year: y), :class =>[check_for_plans("#{y}-#{m}-#{d}"),check_current_day("#{y}-#{m}-#{d}")] %>
+						<% end %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% unless @date.year == current_date + 5 && @date.month == 12 %>
+	<% nextmonth = @date.next_month %>
+	<%= link_to "Next Month", month_path(year: nextmonth.year, month: nextmonth.month), class: "next-month" %>
+<% end %>
+</div>

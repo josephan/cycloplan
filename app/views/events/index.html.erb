@@ -1,0 +1,8 @@
+<ul>
+	<% @events.each do |e| %>
+		<li class="event-list-item"><b><%= e.name %></b> <%= e.about %></li>
+		<%= link_to "delete", event_path(e.id), method: :delete %>
+	<% end %>
+</ul>
+
+<br><%= link_to "new custom event", new_event_path, class: "generic-button" %>

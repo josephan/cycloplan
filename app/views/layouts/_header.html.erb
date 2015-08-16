@@ -1,15 +1,20 @@
 <header>
-	<nav>
+	<div class="main-wrapper">
+		<%= link_to root_path, class: "logo" do %>
+			<%= image_tag 'cycloplan-text-logo.png' %>
+		<% end %>
 		<ul>
-			<li><%= link_to "Home", root_path %></li>
 			<% if logged_in? %>
-				<li><%= link_to "Profile", current_user %></li>
+				<% date = Time.now.in_time_zone(current_user.timezone).to_date %>
+				<li><%= link_to "Entire Life", total_path %></li>
+				<li><%= link_to "Today", day_path(year: date.year, month: date.month, day: date.day) %></li>
+				<li><%= link_to "Events", events_path %></li>
 				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
 				<li><%= link_to "Log out", logout_path, method: "delete" %></li>
 			<% else %>
 				<li><%= link_to "Login", login_path %></li>
-				<li><%= link_to "Sign Up", signup_path %></li>
+				<li><%= link_to "Sign up", signup_path %></li>
 			<% end %>
 		</ul>
-	</nav>
+	</div>
 </header>

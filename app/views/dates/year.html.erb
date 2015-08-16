@@ -1,0 +1,31 @@
+<%= link_to "Back to entire life", total_path, class: "generic-button" %>
+<div class="center-year">
+	<p><%= @date.year %></p>
+	<div class="year-view">
+
+		<% if @date.year > current_user.birthday.year %>
+			<%= link_to "Previous Year", year_path(year: (@date.year - 1)), class: "prev-year" %>
+		<% else %>
+			<div class="placeholder"></div>
+		<% end %>
+
+		<div class="months">
+			<% months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %>
+			<% months.each_with_index do |month, i| %>
+				<% if i + 1 == current_date.month  && @date.year == current_date.year %>
+					<%= link_to month, month_path(year: @date.year, month: (i+1)), class: "current" %>
+				<% else %>
+					<%= link_to month, month_path(year: @date.year, month: (i+1)) %>
+				<% end %>
+			<% end %>
+		</div>
+
+
+		<% if @date.year < current_date.year + 5 %>
+			<%= link_to "Next Year", year_path(year: (@date.year + 1)), class: "next-year" %>
+		<% else %>
+			<div class="placeholder"></div>
+		<% end %>
+
+	</div>
+</div>

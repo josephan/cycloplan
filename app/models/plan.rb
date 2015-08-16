@@ -1,5 +1,4 @@
 class Plan < ActiveRecord::Base
-	scope :today, -> { where("date = CURRENT_DATE")}
 	belongs_to :user
 	belongs_to :event
 
@@ -8,4 +7,20 @@ class Plan < ActiveRecord::Base
 	validates :start_at, presence: true
 	validates :end_at, presence: true
 	validates :event_id, presence: true
+
+	def self.by_year(year)
+		where('extract(year from date) = ?', year)
+	end
+
+	def self.by_month(month)
+		where('extract(month from date) = ?', month)
+	end
+
+	# def self.by_week(week)
+	# 	 where('extract(week from date) = ?', week)
+	# end
+
+	def self.by_day(day)
+		where('extract(day from date) = ?', day)
+	end
 end

@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  get 'total' => 'dates#total'
   get 'day' => 'dates#day'
+  get 'week' => 'dates#week'
+  get 'month' => 'dates#month'
+  get 'year' => 'dates#year'
 
-  resources :users, except: :index
-  resources :plans, except: :index
-  resources :events
+  resources :users
+  resources :plans, only: [:create,:destroy]
+  resources :events, only: [:index,:new,:create,:destroy]
 end

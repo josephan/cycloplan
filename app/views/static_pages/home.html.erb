@@ -1,5 +1,25 @@
-<% provide(:title, "Planner") %>
-<div class="container">
-	<h1>Welcome to the app!</h1>
-	<p>The site is under construction.</p>
+<div class="home-page">
+	<h2>What does it take to accomplish your goals?</h2>
+	<div class="home-icons">
+		<%= image_tag "health-sleep.svg" %>
+		<%= image_tag "health-exercise.svg" %>
+		<%= image_tag "health-shower.svg" %>
+		<%= image_tag "health-eat.svg" %>
+	</div>
+	<h3>Plan the things that you know you should be doing.</h3>
+	<div class="home-icons">
+		<%= image_tag "work-commute.svg" %>
+		<%= image_tag "work-job.svg" %>
+		<%= image_tag "work-school.svg" %>
+		<%= image_tag "work-study.svg" %>
+	</div>
+	<h1>And do it <span style="font-weight: 700; color: #1c4054;">everyday.<span></h1>
+	<div style="text-align: center;">
+		<h4>Sign up and start today.</h4>
+		<div class="large-button">
+			<%= link_to "Sign up", signup_path %>
+		</div>
+	</div>
 </div>
+<%= render 'layouts/footer' %>
+
