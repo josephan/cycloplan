@@ -522,7 +522,7 @@ function jsonIntoPlanner() {
 			var topp = hourToPixels(plan.start_at) + minuteToPixels(plan.start_at);
 			var height = hourToPixels(plan.end_at) + minuteToPixels(plan.end_at) - topp;
 			var time = " (" + plan.start_at + " - " + plan.end_at + ")"
-			
+			planWrap.attr('id', 'plan-' + plan.id);
 			planWrap.css({"top": topp + "px", "height": height + 3 + "px"});
 			planDisplay.css({"height": height - 2 + "px"});
 			planWrap.append(planDisplay);

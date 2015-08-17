@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
 			flash[:success] = "Your settings have been saved."
-			redirect_to @user
+			redirect_to edit_user_url(@user)
 		else
 			render 'edit'
 		end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-			params.require(:user).permit(:first_name, :last_name, :birthday, :email, :password, :password_confirmation, :timezone)
+			params.require(:user).permit(:first_name, :last_name, :birthday, :email, :password, :password_confirmation, :timezone, :twelve_hours)
 		end
 
 		def correct_user

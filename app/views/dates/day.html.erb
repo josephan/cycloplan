@@ -32,7 +32,7 @@
 		</tr>
 		<% hours.each do |h| %>
 			<tr>
-				<td class="hour-container" rowspan="4"><%= "#{h}:00" %></td>
+				<td class="hour-container" rowspan="4"><%= twelve_hour_clock(h) %></td>
 				<td class="interval" data-interval=<%= "#{h}:00" %> ></td>
 			</tr>
 			<tr>

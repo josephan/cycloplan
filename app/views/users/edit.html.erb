@@ -13,6 +13,8 @@
 	<%= f.password_field :password_confirmation %><br>
 	<%= f.label :timezone, "Time Zone" %><br>
 	<%= f.time_zone_select :timezone, nil, include_blank: true %><br>
+	<%= f.label :twelve_hours, "Hour view" %><br>
+	<%= f.select :twelve_hours, [['12 hours', true], ['24 hours', false]] %><br>
 	<%= f.submit "Save settings" %>
 <% end %>
 <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." } %>

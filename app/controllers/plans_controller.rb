@@ -5,6 +5,7 @@ class PlansController < ApplicationController
 	def create
 		date = Date.parse(session[:date])
 		@plan = current_user.plans.create!(plan_params)
+		@json = @plan.to_json
 		redirect_to day_url(year: date.year, month: date.month, day: date.day)
 	end
 
