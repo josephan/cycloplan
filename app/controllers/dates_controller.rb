@@ -1,7 +1,6 @@
 class DatesController < ApplicationController
 	before_action :logged_in_user
 	before_action :edit_date, except: :total
-	before_action :assemble_date, except: :total
 
 	def total
 		@user = current_user
@@ -29,53 +28,26 @@ class DatesController < ApplicationController
 	end
 
 	private
-		# reassigns the date for the session, using the params attached to links
-		def edit_date
-			check_year
-			if params[:day]
-				check_day
-			elsif params[:month]
-				check_month
-			elsif params[:year]
-				session[:date] = Date.new(params[:year].to_i)
-			end
-		end
 
-		# creates a Date object instance variable for all views from the session
-		def assemble_date
-			@date = session[:date]
-		end
+	def edit_date
+		month = params[:month] ? params[:month].to_i : 1
+		day = params[:day] ? params[:day].to_i : 1
+		validate_year
+		session[:date] = Date.new(params[:year].to_i, month, day)
+		@date = session[:date]
+	rescue ArgumentError, RangeError
+		flash[:error] = "Invalid date."
+		redirect_to total_url
+	end
 
-		# validates date from params, redirects back with a flash warning
-		def check_year
-			if params[:year].to_i < current_user.birthday.year
-				flash[:error] = "Either the URL you entered was invalid or the date is too far into the past."
-				redirect_to total_url
-			elsif params[:year].to_i > Time.now.in_time_zone(current_user.timezone).year + 5
-				flash[:error] = "Let's not get too ahead of ourselves. You can only plan 5 years ahead."
-				redirect_to total_url
-			end
+	def validate_year
+		if params[:year].to_i < current_user.birthday.year
+			flash[:error] = "Either the URL you entered was invalid or the date is too far into the past."
+			redirect_to total_url
+		elsif params[:year].to_i > Time.now.in_time_zone(current_user.timezone).year + 5
+			flash[:error] = "Let's not get too ahead of ourselves. You can only plan 5 years ahead."
+			redirect_to total_url
 		end
-
-		def check_day
-			begin
-				session[:date] = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-			rescue ArgumentError
-				flash[:error] = "Invalid date."
-				redirect_to total_url
-			rescue RangeError
-				flash[:error] = "Invalid date."
-				redirect_to total_url
-			end
-		end
-
-		def check_month
-			begin
-				session[:date] = Date.new(params[:year].to_i, params[:month].to_i)
-			rescue ArgumentError
-				flash[:error] = "Invalid date."
-				redirect_to total_url
-			end
-		end
+	end
 
 end
