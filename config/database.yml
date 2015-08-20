@@ -82,6 +82,10 @@ test:
 #
 production:
   <<: *default
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
   database: planner_production
-  username: planner
+  pool: 5
+  username: <%= ENV['PLANNER_DATABASE_USER'] %>
   password: <%= ENV['PLANNER_DATABASE_PASSWORD'] %>
