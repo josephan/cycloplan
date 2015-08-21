@@ -10,8 +10,11 @@
 	<%= f.password_field :password_confirmation, placeholder: "Confirm password" %><br>
 	<%= f.label :birthday, "Birthday" %><br><%= f.date_select :birthday, {use_short_month: true, start_year: 1905, end_year: Date.today.year, order: [:month, :day, :year], prompt: true} %><br>
 	<%= f.submit "Sign Up" %>
-	<p>Already registered? <%= link_to "Sign in.", login_path %></p>
+	<p class="agreement">
+		By signing up, you agree to the <%= link_to "terms of service", terms_path %> and the <%= link_to "privacy policy", privacy_path %>.
+	</p>
 <% end %>
+	<p>Already registered? <%= link_to "Sign in.", login_path %></p>
 </div>
 
 		
