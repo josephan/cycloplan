@@ -10,8 +10,12 @@ class PlansController < ApplicationController
 
 	def destroy
 		date = Date.parse(session[:date])
-		Plan.find(params[:id]).destroy
-		redirect_to day_url(year: date.year, month: date.month, day: date.day)
+		@plan = Plan.find(params[:id])
+		@plan.destroy
+		respond_to do |format|
+			format.html {redirect_to day_url(year: date.year, month: date.month, day: date.day)}
+			format.js
+		end
 	end
 
 	private

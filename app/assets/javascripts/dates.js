@@ -518,7 +518,7 @@ function jsonIntoPlanner() {
 			var plan = window.gon.plans[i];
 			var planWrap = $('<div class="plan-wrap"></div>');
 			var planDisplay = $('<div class="plan-display"></div>');
-			var destroyLink = $('<a rel="nofollow" data-method="delete" class="plan-delete" href="/plans/' + plan.id + '"></a>');
+			var destroyLink = $('<a rel="nofollow" data-method="delete" data-remote="true" class="plan-delete" href="/plans/' + plan.id + '"></a>');
 			var topp = hourToPixels(plan.start_at) + minuteToPixels(plan.start_at);
 			var height = hourToPixels(plan.end_at) + minuteToPixels(plan.end_at) - topp;
 			var time = " (" + plan.start_at + " - " + plan.end_at + ")"
