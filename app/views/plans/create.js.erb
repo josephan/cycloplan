@@ -1,45 +1,45 @@
-// // returns the length in pixels from the hours in a time
-// function hourToPixels(time) {
-// 	var string = time.slice(0,2);
-// 	var number = parseInt(string, 10);
-// 	var result = number * 4 * 25;
-// 	return result;
-// }
-// // returns the length in pixels from the minutes in a time
-// function minuteToPixels(time) {
-// 	var string = time.slice(3,5);
-// 	var number = parseInt(string, 10);
-// 	var result;
-// 	if (number >= 0 && number <= 7) {
-// 		result = 0;
-// 	} else if (number > 7 && number <= 22) {
-// 		result = 25;
-// 	} else if (number > 22 && number <= 37) {
-// 		result = 50;
-// 	} else if (number > 37 && number <= 52) {
-// 		result = 75;
-// 	} else {
-// 		result = 100;
-// 	}
-// 	return result;
-// }
-// function insertPlanAJAX() {
-// 	var planWrap = $('<div class="plan-wrap"></div>');
-// 	var planDisplay = $('<div class="plan-display"></div>');
-// 	var destroyLink = $('<a rel="nofollow" data-method="delete" class="plan-delete" href="/plans/' + <%= @plan.id %> + '"></a>');
-// 	var topp = hourToPixels(<%= j @plan.start_at.to_formatted_s(:time).to_s %>) + minuteToPixels(<%= j @plan.start_at.to_formatted_s(:time).to_s %>);
-// 	var height = hourToPixels(<%= j @plan.end_at.to_formatted_s(:time).to_s %>) + minuteToPixels(<%= j @plan.end_at.to_formatted_s(:time).to_s %>) - topp;
-// 	var time = " (" + <%= j @plan.start_at.to_formatted_s(:time).to_s %> + " - " + <%= j @plan.end_at.to_formatted_s(:time).to_s %> + ")"
+// returns the length in pixels from the hours in a time
+function hourToPixels(time) {
+	var string = time.slice(0,2);
+	var number = parseInt(string, 10);
+	var result = number * 4 * 25;
+	return result;
+}
+// returns the length in pixels from the minutes in a time
+function minuteToPixels(time) {
+	var string = time.slice(3,5);
+	var number = parseInt(string, 10);
+	var result;
+	if (number >= 0 && number <= 7) {
+		result = 0;
+	} else if (number > 7 && number <= 22) {
+		result = 25;
+	} else if (number > 22 && number <= 37) {
+		result = 50;
+	} else if (number > 37 && number <= 52) {
+		result = 75;
+	} else {
+		result = 100;
+	}
+	return result;
+}
+function insertPlanAJAX() {
+	var planWrap = $('<div class="plan-wrap"></div>');
+	var planDisplay = $('<div class="plan-display"></div>');
+	var destroyLink = $('<a rel="nofollow" data-remote="true" data-method="delete" class="plan-delete" href="/plans/' + "<%= @plan.id %>" + '"></a>');
+	var topp = hourToPixels("<%= escape_javascript @plan.start_at.to_formatted_s(:time) %>") + minuteToPixels("<%= escape_javascript @plan.start_at.to_formatted_s(:time) %>");
+	var height = hourToPixels("<%= escape_javascript @plan.end_at.to_formatted_s(:time) %>") + minuteToPixels("<%= escape_javascript @plan.end_at.to_formatted_s(:time) %>") - topp;
+	var time = " (" + "<%= escape_javascript @plan.start_at.to_formatted_s(:time) %>" + " - " + "<%= escape_javascript @plan.end_at.to_formatted_s(:time) %>" + ")"
 
-// 	planWrap.css({"top": topp + "px", "height": height + 3 + "px"});
-// 	planDisplay.css({"height": height - 2 + "px"});
-// 	planWrap.append(planDisplay);
-// 	planDisplay.append(<%= j @plan.event.name.to_s %> + time);
-// 	planDisplay.append(destroyLink);
-// 	$(".plan-display-container").append(planWrap);
-// }
+	planWrap.css({"top": topp + "px", "height": height + 3 + "px"});
+	planDisplay.css({"height": height - 2 + "px"});
+	planWrap.append(planDisplay);
+	planDisplay.append("<%= escape_javascript @plan.event.name %>" + time);
+	planDisplay.append(destroyLink);
+	$(".plan-display-container").append(planWrap);
+}
 
-// $('.category-container').hide();
-// $('.plan-new-wrap').remove();
-// insertPlanAJAX();
+$('.category-container').hide();
+$('.plan-new-wrap').remove();
+insertPlanAJAX();
 
