@@ -2,14 +2,14 @@
 
 one:
   user_id: 1
-  image: MyString
-  name: MyString
-  description: MyText
-  type: 
+  image: health-sleep.svg
+  name: sleep
+  about: Sleeping.
+  type: HealthEvent
 
 two:
   user_id: 1
-  image: MyString
-  name: MyString
-  description: MyText
-  type: 
+  image: job
+  name: work-job.svg
+  about: Working.
+  type: WorkEvent

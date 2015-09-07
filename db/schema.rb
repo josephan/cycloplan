@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821101249) do
+ActiveRecord::Schema.define(version: 20150904200939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 20150821101249) do
     t.string   "last_name"
     t.string   "email"
     t.date     "birthday"
-    t.string   "timezone"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "timezone",        default: "Eastern Time (US & Canada)"
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "twelve_hours",    default: true

@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  birthday: 2015-07-07
-  timezone: MyString
+  first_name: Franz
+  last_name: Schubert
+  email: franzschubert@example.com
+  birthday: 1950-01-01
+  timezone: UTC
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+  first_name: Wolfgang
+  last_name: Mozart
+  email: wolfgangmozart@example.com
   birthday: 2015-07-07
-  timezone: MyString
+  timezone: UTC

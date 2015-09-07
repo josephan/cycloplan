@@ -5,11 +5,11 @@ one:
   date: 2015-07-12
   start_at: 2015-07-12 03:53:32
   end_at: 2015-07-12 03:53:32
-  event_id: 1
+  event_id: 20
 
 two:
   user_id: 1
   date: 2015-07-12
   start_at: 2015-07-12 03:53:32
   end_at: 2015-07-12 03:53:32
-  event_id: 1
+  event_id: 21

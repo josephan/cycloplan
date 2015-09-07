@@ -12,7 +12,7 @@
 
   get 'total' => 'dates#total'
   get 'day' => 'dates#day'
-  get 'week' => 'dates#week'
+  # get 'week' => 'dates#week'
   get 'month' => 'dates#month'
   get 'year' => 'dates#year'
 
